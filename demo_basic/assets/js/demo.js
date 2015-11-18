@@ -3,7 +3,6 @@ var DEMO = {
 	ms_Renderer: null,
 	ms_Camera: null, 
 	ms_Scene: null, 
-	ms_Controls: null,
 	ms_Water: null,
 
     enable: (function enable() {
@@ -27,9 +26,6 @@ var DEMO = {
 		this.ms_Camera = new THREE.PerspectiveCamera(55.0, WINDOW.ms_Width / WINDOW.ms_Height, 0.5, 3000000);
 		this.ms_Camera.position.set(1000, 500, -1500);
 		this.ms_Camera.lookAt(new THREE.Vector3(0, 0, 0));
-		
-		// Initialize Orbit control		
-		this.ms_Controls = new THREE.OrbitControls(this.ms_Camera, this.ms_Renderer.domElement);
 	
 		// Add light
 		var directionalLight = new THREE.DirectionalLight(0xffff55, 1);
@@ -61,7 +57,7 @@ var DEMO = {
 		
 		this.ms_Scene.add(aMeshMirror);
 	
-		this.loadSkyBox();
+		// this.loadSkyBox();
 	},
 	
 	loadSkyBox: function loadSkyBox() {
@@ -101,7 +97,6 @@ var DEMO = {
 	
 	update: function update() {
 		this.ms_Water.material.uniforms.time.value += 1.0 / 60.0;
-		this.ms_Controls.update();
 		this.display();
 	},
 	
