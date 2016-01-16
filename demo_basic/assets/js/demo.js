@@ -59,36 +59,6 @@ var DEMO = {
 	
 		// this.loadSkyBox();
 	},
-	
-	loadSkyBox: function loadSkyBox() {
-		var aCubeMap = THREE.ImageUtils.loadTextureCube([
-		  '../demo/assets/img/px.jpg',
-		  '../demo/assets/img/nx.jpg',
-		  '../demo/assets/img/py.jpg',
-		  '../demo/assets/img/ny.jpg',
-		  '../demo/assets/img/pz.jpg',
-		  '../demo/assets/img/nz.jpg'
-		]);
-		aCubeMap.format = THREE.RGBFormat;
-
-		var aShader = THREE.ShaderLib['cube'];
-		aShader.uniforms['tCube'].value = aCubeMap;
-
-		var aSkyBoxMaterial = new THREE.ShaderMaterial({
-		  fragmentShader: aShader.fragmentShader,
-		  vertexShader: aShader.vertexShader,
-		  uniforms: aShader.uniforms,
-		  depthWrite: false,
-		  side: THREE.BackSide
-		});
-
-		var aSkybox = new THREE.Mesh(
-		  new THREE.BoxGeometry(1000000, 1000000, 1000000),
-		  aSkyBoxMaterial
-		);
-		
-		this.ms_Scene.add(aSkybox);
-	},
 
     display: function display() {
 		this.ms_Water.render();
